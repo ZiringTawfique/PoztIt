@@ -2,10 +2,10 @@
 using MongoDB.Bson.Serialization.Attributes;
 namespace MongoDB.DataEntities
 {
-    public class Users
+    public class User
     {
         [BsonId]
-        public int userID { get; set; }
+        public int UserID { get; set; }
         public string Username { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }

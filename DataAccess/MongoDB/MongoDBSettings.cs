@@ -1,5 +1,5 @@
 ﻿using System;
-namespace MongoDB.DataEntities
+namespace MongoDB
 {
     public class MongoDBSettings
     {

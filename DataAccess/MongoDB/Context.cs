@@ -33,11 +33,11 @@ namespace MongoDB
             }
         }
 
-        public IMongoCollection<Users> UsersCollection
+        public IMongoCollection<User> UsersCollection
         {
             get
             {
-                return _database.GetCollection<Users>("Users");
+                return _database.GetCollection<User>("Users");
             }
         }
      }

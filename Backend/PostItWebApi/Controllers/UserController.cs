@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using Application.Interfaces;
+using Application.UseCases.Register;
 using Microsoft.AspNetCore.Mvc;
+using PostItWebApi.Model;
 
 namespace PostItWebApi.Controllers
 {
     public class UserController : Controller
     {
-        IRegister _register;
-        public UserController()
+        IRegisterUser _register;
+
+        public UserController(IRegisterUser register)
         {
+            _register = register;
         }
 
         // GET api/values
@@ -28,8 +31,9 @@ namespace PostItWebApi.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]RegisterRequest request)
         {
+            _register.Register(request.username);
         }
 
         // PUT api/values/5

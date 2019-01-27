@@ -6,6 +6,13 @@
 
   <ItemGroup>
     <Folder Include="UseCases\" />
-    <Folder Include="Interfaces\" />
+    <Folder Include="UseCases\Register\" />
+    <Folder Include="Repository\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Class1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\Domain\Domain.csproj" />
   </ItemGroup>
 </Project>

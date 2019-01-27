@@ -15,7 +15,7 @@ namespace MongoDB.DataEntities
 
         public DateTime DateAdded { get; set; }
 
-        public Users User { get; set; }
+        public User User { get; set; }
 
         public bool isUrgent { get; set; }
 
