@@ -1,7 +1,9 @@
 ﻿using System;
+using Application.Interfaces;
+
 namespace Application.UseCases
 {
-    public class Register
+    public class Register : IRegister
     {
         public Register()
         {
