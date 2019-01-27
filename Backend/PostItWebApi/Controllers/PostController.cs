@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace PostItWebApi.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class PostController : Controller
     {
         // GET api/values
         [HttpGet]
