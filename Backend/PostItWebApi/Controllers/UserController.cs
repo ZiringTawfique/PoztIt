@@ -29,6 +29,7 @@ namespace PostItWebApi.Controllers
             return "value";
         }
 
+        [Route("User/Post")]
         // POST api/values
         [HttpPost]
         public void Post([FromBody]RegisterRequest request)
