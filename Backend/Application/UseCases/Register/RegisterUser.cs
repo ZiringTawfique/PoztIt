@@ -15,9 +15,9 @@ namespace Application.UseCases.Register
 
         // The application layer will also contain business rules regarding user registration
 
-        public void Register(string username)
+        public void Register(string username, string name, string initialAddress, int initialTeleNumber)
         {
-            var user = new User { Username = username};
+            var user = new User(username, name, initialAddress, initialTeleNumber);
 
             _userWriteOnlyRepository.AddUser(user);
 

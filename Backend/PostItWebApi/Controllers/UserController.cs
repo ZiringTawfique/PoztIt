@@ -30,11 +30,11 @@ namespace PostItWebApi.Controllers
         }
 
         [Route("User/Post")]
-        // POST api/values
         [HttpPost]
         public void Post([FromBody]RegisterRequest request)
         {
-            _register.Register(request.username);
+            _register.Register(request.Username, request.Name, request.InitialAddress,
+            request.InitialTeleNumber);
         }
 
         // PUT api/values/5
