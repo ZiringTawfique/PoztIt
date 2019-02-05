@@ -14,6 +14,7 @@ namespace Domain.Model
             {
                 throw new DomainException("Username of user must be specified");
             }
+            //Handle username cannot be changed. 
 
             Username = username;
             Name = name;

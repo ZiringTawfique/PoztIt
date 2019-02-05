@@ -7,5 +7,9 @@ namespace Application.Repository
     public interface IUserWriteOnlyRepository
     {
         Task AddUser(User user);
+
+        Task<bool> DeleteUser(string username);
+
+        Task UpdateUser(User user);
     }
 }
