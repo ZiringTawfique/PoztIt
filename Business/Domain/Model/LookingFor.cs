@@ -3,7 +3,7 @@ namespace Domain.Model
 {
 	public class LookingFor : Post
     {
-        public LookingFor()
+        public LookingFor(User user) : base(user)
         {
         }
     }

@@ -7,4 +7,7 @@
   <ItemGroup>
     <Folder Include="Model\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Model\Category.cs" />
+  </ItemGroup>
 </Project>
