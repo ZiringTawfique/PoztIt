@@ -63,7 +63,8 @@ namespace MongoDB.Queries
             try
             {
                 var user = await _context.UsersCollection.Find(filter).FirstOrDefaultAsync();
-                return new User(user.Username, user.Name, user.Address, user.TeleNumber);
+                var ans = (user != null) ? new User(user.Username, user.Name, user.Address, user.TeleNumber) : null;
+                return ans;
             }
             catch (Exception ex)
             {
