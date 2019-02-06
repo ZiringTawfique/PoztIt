@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Domain.Model;
 
-namespace Application.UseCases.Register
+namespace Application.UseCases.UserUseCase
 {
-    public interface IRegisterUser
+    public interface IUserUseCase
     {
         void Register(string username, string name, string initialAddress, 
             int initialTeleNumber);

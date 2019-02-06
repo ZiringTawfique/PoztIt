@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Repository;
-using Application.UseCases.Register;
+using Application.UseCases.UserUseCase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,7 +28,7 @@ namespace PostItWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<IRegisterUser, RegisterUser>();
+            services.AddScoped<IUserUseCase, UserUseCase>();
             services.AddScoped<IUserReadOnlyRepository, UserQueries>();
             services.AddScoped<IUserWriteOnlyRepository, UserQueries>();
             services.Configure<MongoDBSettings>(options =>

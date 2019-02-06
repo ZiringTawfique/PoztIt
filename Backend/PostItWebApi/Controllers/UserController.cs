@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Application.UseCases.Register;
+using Application.UseCases.UserUseCase;
 using Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 using PostItWebApi.Model;
@@ -10,23 +10,23 @@ namespace PostItWebApi.Controllers
 {
     public class UserController : Controller
     {
-        IRegisterUser _register;
+        IUserUseCase _userUseCase;
 
-        public UserController(IRegisterUser register)
+        public UserController(IUserUseCase userUseCase)
         {
-            _register = register;
+            _userUseCase = userUseCase;
         }
 
         [Route("User/GetAUser")]
         [HttpGet("{username}")]
-        public Task<User> Get(string username) => _register.GetUser(username);
+        public Task<User> Get(string username) => _userUseCase.GetUser(username);
 
 
         [Route("User/Post")]
         [HttpPut]
         public void Put([FromBody]UserRequest request)
         {
-            _register.Register(request.Username, request.Name, request.InitialAddress,
+            _userUseCase.Register(request.Username, request.Name, request.InitialAddress,
             request.InitialTeleNumber);
         }
 
@@ -34,12 +34,12 @@ namespace PostItWebApi.Controllers
         [HttpPut]
         public void Update([FromBody]UserRequest request)
         {
-            _register.UpdateUser(request.Username, request.Name, request.InitialAddress,
+            _userUseCase.UpdateUser(request.Username, request.Name, request.InitialAddress,
             request.InitialTeleNumber);
         }
 
         [Route("User/Delete")]
         [HttpDelete("{username}")]
-        public void Delete(string username) => _register.DeleteUser(username);
+        public void Delete(string username) => _userUseCase.DeleteUser(username);
     }
 }

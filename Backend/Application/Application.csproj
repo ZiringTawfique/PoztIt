@@ -6,8 +6,9 @@
 
   <ItemGroup>
     <Folder Include="UseCases\" />
-    <Folder Include="UseCases\Register\" />
     <Folder Include="Repository\" />
+    <Folder Include="UseCases\PostUseCase\" />
+    <Folder Include="UseCases\UserUseCase\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Class1.cs" />

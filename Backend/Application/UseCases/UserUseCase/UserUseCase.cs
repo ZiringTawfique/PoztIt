@@ -3,14 +3,14 @@ using System.Threading.Tasks;
 using Application.Repository;
 using Domain.Model;
 
-namespace Application.UseCases.Register
+namespace Application.UseCases.UserUseCase
 {
-    public sealed class RegisterUser : IRegisterUser
+    public sealed class UserUseCase : IUserUseCase
     {
         IUserWriteOnlyRepository _userWriteOnlyRepository;
         readonly IUserReadOnlyRepository _userReadOnlyRepository;
 
-        public RegisterUser(IUserWriteOnlyRepository userWriteOnlyRepository,
+        public UserUseCase(IUserWriteOnlyRepository userWriteOnlyRepository,
                             IUserReadOnlyRepository userReadOnlyRepository)
         {
             _userWriteOnlyRepository = userWriteOnlyRepository;
