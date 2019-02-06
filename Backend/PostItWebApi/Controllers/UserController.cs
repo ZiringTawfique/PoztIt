@@ -38,7 +38,7 @@ namespace PostItWebApi.Controllers
             request.InitialTeleNumber);
         }
 
-        [Route("User/DeleteUser")]
+        [Route("User/Delete")]
         [HttpDelete("{username}")]
         public void Delete(string username) => _register.DeleteUser(username);
     }

@@ -31,7 +31,7 @@ namespace MongoDB.Queries
                 await _context.UsersCollection.InsertOneAsync(userEntity);
             }
 
-            catch(Exception ex) 
+            catch(MongoException ex) 
             {
                 throw ex;
             }
@@ -39,17 +39,17 @@ namespace MongoDB.Queries
            
         }
 
-        public async Task<bool> DeleteUser(string username)
+        public async Task DeleteUser(string username)
         {
             try
             {
                 var builder = Builders<DataEntities.User>.Filter;
                 var filter = builder.Eq(x => x.Username, username);
                 var deleteUser = await _context.UsersCollection.DeleteOneAsync(filter);
-
-                return deleteUser.IsAcknowledged && deleteUser.DeletedCount > 0;
+                var IsDeleted = deleteUser.IsAcknowledged && deleteUser.DeletedCount > 0;
+                if (!IsDeleted) { throw new ArgumentException("Invalid user, cannot delete user information"); }
             }
-            catch (Exception ex)
+            catch (MongoException ex)
             {
                 // log or manage the exception
                 throw ex;
@@ -66,16 +66,36 @@ namespace MongoDB.Queries
                 var ans = (user != null) ? new User(user.Username, user.Name, user.Address, user.TeleNumber) : null;
                 return ans;
             }
-            catch (Exception ex)
+            catch (MongoException ex)
             {
                 // log or manage the exception
                 throw ex;
             }
         }
 
-        public Task UpdateUser(User user)
+        public async Task UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            DataEntities.User userEntity = new DataEntities.User
+            {
+                Username = user.Username,
+                Name = user.Name,
+                Address = user.Address,
+                TeleNumber = user.TeleNumber
+            };
+
+            try { 
+                var filter = Builders<DataEntities.User>.Filter.Eq(x => x.Username, userEntity.Username);
+                var result = await _context.UsersCollection.ReplaceOneAsync(filter, userEntity);
+
+                var IsUpdated = result.IsAcknowledged && result.ModifiedCount > 0;
+                if(!IsUpdated) { throw new ArgumentException("Invalid user, cannot update user information"); }
+            } 
+
+            catch(Exception ex) {
+                throw ex;
+            
+            }
+
         }
     }
 }
