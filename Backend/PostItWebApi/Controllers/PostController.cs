@@ -2,13 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.UseCases.PostUseCase;
 using Microsoft.AspNetCore.Mvc;
+using PostItWebApi.Model;
 
 namespace PostItWebApi.Controllers
 {
     [Route("api/[controller]")]
     public class PostController : Controller
     {
+        private IPostCRUD _postCRUD;
+
+        public PostController(IPostCRUD postCRUD)
+        {
+            _postCRUD = postCRUD;
+        }
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
@@ -25,8 +33,10 @@ namespace PostItWebApi.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]PostRequest postRequest)
         {
+            _postCRUD.CreatePost(postRequest.Title, postRequest.Price, postRequest.Location,
+            postRequest.FreeText, postRequest.User);
         }
 
         // PUT api/values/5

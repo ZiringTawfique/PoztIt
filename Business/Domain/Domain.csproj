@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Model\" />
+    <Folder Include="SharedModel\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Model\Category.cs" />

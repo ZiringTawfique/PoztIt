@@ -7,7 +7,8 @@ namespace Application.UseCases.PostUseCase
 {
     public interface IPostCRUD
     {
-        void CreatePost();
+        void CreatePost(string title, double price, string location,
+                               string freeTextt, Domain.SharedModel.User user);
         Task<Post> GetPost(int postId);
         Task<IReadOnlyCollection<Post>> GetPosts();
         void UpdatePost(Post post);

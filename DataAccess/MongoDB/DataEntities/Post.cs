@@ -19,13 +19,11 @@ namespace MongoDB.DataEntities
 
         public bool isUrgent { get; set; }
 
-        public Item ItemInfo { get; set; }
-       
-        public Recommendation RecommendationPost { get; set; }
+        //public Recommendation RecommendationPost { get; set; }
 
-        public LookingFor LookingForPost { get; set; }
+        //public LookingFor LookingForPost { get; set; }
 
-        public LostAndFound LostAndFoundPost { get; set; }
+        //public LostAndFound LostAndFoundPost { get; set; }
 
        
 

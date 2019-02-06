@@ -5,7 +5,7 @@ namespace Domain.Model
     {
         public string Location { get; set; }
 
-        public Recommendation(User user) : base (user)
+        public Recommendation(SharedModel.User user) : base (user)
         {
         }
     }

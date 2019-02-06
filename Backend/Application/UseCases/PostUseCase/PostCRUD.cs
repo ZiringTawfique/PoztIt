@@ -1,19 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Application.Repository;
 using Domain.Model;
 
 namespace Application.UseCases.PostUseCase
 {
     public class PostCRUD : IPostCRUD
     {
-        public PostCRUD()
+        private IPostReadOnlyRepository _postReadOnly;
+        private IPostWriteOnlyRepository _postWriteOnly;
+
+        public PostCRUD(IPostReadOnlyRepository postReadOnly, IPostWriteOnlyRepository postWriteOnly)
         {
+            _postReadOnly = postReadOnly;
+            _postWriteOnly = postWriteOnly;
         }
 
-        public void CreatePost()
+        public void CreatePost(string title, double price, string location,
+                               string freeText, Domain.SharedModel.User user )
         {
-            throw new NotImplementedException();
+            var post = new Post(user);
+            _postWriteOnly.CreatePost(post);
         }
 
         public void DeletePost(int postId)

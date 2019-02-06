@@ -11,14 +11,14 @@ namespace Domain.Model
 
         public DateTime DateAdded { get; private set; }
 
-        public User User { get; private set; }
+        public SharedModel.User User { get; set; }
 
         public bool IsUrgent { get; set; }
 
         public double Price { get; set; }
 
 
-        public Post(User user)
+        public Post(SharedModel.User user)
         {
             User = user;
             DateAdded = DateTime.Now;
