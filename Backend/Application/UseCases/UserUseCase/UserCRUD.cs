@@ -5,12 +5,12 @@ using Domain.Model;
 
 namespace Application.UseCases.UserUseCase
 {
-    public sealed class UserUseCase : IUserUseCase
+    public sealed class UserCRUD : IUserCRUD
     {
         IUserWriteOnlyRepository _userWriteOnlyRepository;
         readonly IUserReadOnlyRepository _userReadOnlyRepository;
 
-        public UserUseCase(IUserWriteOnlyRepository userWriteOnlyRepository,
+        public UserCRUD(IUserWriteOnlyRepository userWriteOnlyRepository,
                             IUserReadOnlyRepository userReadOnlyRepository)
         {
             _userWriteOnlyRepository = userWriteOnlyRepository;

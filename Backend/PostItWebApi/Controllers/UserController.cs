@@ -10,23 +10,23 @@ namespace PostItWebApi.Controllers
 {
     public class UserController : Controller
     {
-        IUserUseCase _userUseCase;
+        IUserCRUD _userCRUD;
 
-        public UserController(IUserUseCase userUseCase)
+        public UserController(IUserCRUD userCRUD)
         {
-            _userUseCase = userUseCase;
+            _userCRUD = userCRUD;
         }
 
         [Route("User/GetAUser")]
         [HttpGet("{username}")]
-        public Task<User> Get(string username) => _userUseCase.GetUser(username);
+        public Task<User> Get(string username) => _userCRUD.GetUser(username);
 
 
         [Route("User/Post")]
         [HttpPut]
         public void Put([FromBody]UserRequest request)
         {
-            _userUseCase.Register(request.Username, request.Name, request.InitialAddress,
+            _userCRUD.Register(request.Username, request.Name, request.InitialAddress,
             request.InitialTeleNumber);
         }
 
@@ -34,12 +34,12 @@ namespace PostItWebApi.Controllers
         [HttpPut]
         public void Update([FromBody]UserRequest request)
         {
-            _userUseCase.UpdateUser(request.Username, request.Name, request.InitialAddress,
+            _userCRUD.UpdateUser(request.Username, request.Name, request.InitialAddress,
             request.InitialTeleNumber);
         }
 
         [Route("User/Delete")]
         [HttpDelete("{username}")]
-        public void Delete(string username) => _userUseCase.DeleteUser(username);
+        public void Delete(string username) => _userCRUD.DeleteUser(username);
     }
 }

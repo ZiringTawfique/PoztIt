@@ -28,7 +28,7 @@ namespace PostItWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<IUserUseCase, UserUseCase>();
+            services.AddScoped<IUserCRUD, UserCRUD>();
             services.AddScoped<IUserReadOnlyRepository, UserQueries>();
             services.AddScoped<IUserWriteOnlyRepository, UserQueries>();
             services.Configure<MongoDBSettings>(options =>

@@ -4,7 +4,7 @@ using Domain.Model;
 
 namespace Application.UseCases.UserUseCase
 {
-    public interface IUserUseCase
+    public interface IUserCRUD
     {
         void Register(string username, string name, string initialAddress, 
             int initialTeleNumber);
